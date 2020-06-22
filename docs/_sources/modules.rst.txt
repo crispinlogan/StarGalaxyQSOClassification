@@ -1,0 +1,20 @@
+.. _modules-description:
+
+Modules description
+========
+The three stages of the code can be run separately in the :ref:`binary`, :ref:`consolidation` and
+:ref:`predict`, or are packaged up to run in that order in the :ref:`main`. The :ref:`config` contains a class
+that holds the configuration variables used throughout the code. The :ref:`helper` contains
+a class that holds the functions used throughout the code. The code is available publicly `here <https://github.com/SFotopoulou/classification_ec>`_ **TO CHANGE**
+A README file is also provided in that github repo, which provides setup instructions, and
+more detail on running the code itself.
+
+.. toctree::
+   :maxdepth: 4
+
+   main
+   binary_classifier
+   classifier_consolidation
+   predict
+   config
+   helper_functions

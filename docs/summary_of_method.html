@@ -1,0 +1,244 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Summary of modules and method &mdash; Unsupervised Classification of Star, Galaxy, QSOs with HDBSCAN  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Modules description" href="modules.html" />
+    <link rel="prev" title="Welcome to Unsupervised Classification of Star, Galaxy, QSOs with HDBSCAN’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Unsupervised Classification of Star, Galaxy, QSOs with HDBSCAN
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Summary of modules and method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules description</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Unsupervised Classification of Star, Galaxy, QSOs with HDBSCAN</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Summary of modules and method</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/summary_of_method.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="summary-of-modules-and-method">
+<span id="id1"></span><h1>Summary of modules and method<a class="headerlink" href="#summary-of-modules-and-method" title="Permalink to this headline">¶</a></h1>
+<p>The method follows that presented in <a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2020A%26A...633A.154L/abstract">Logan and Fotopoulou (2020)</a> and
+makes use of <a class="reference external" href="https://hdbscan.readthedocs.io/en/latest/">HDBSCAN</a> as the unsupervised clusterer.
+It is recommended to read that paper to fully understand the method used here.</p>
+<p>In short, our method takes colours as input, and
+selects the most important colours to use as attributes by running a Random Forest (RF)
+to rank the importances of the features. Various feature combinations are then reduced
+to lower dimensions via Principal Component Analysis (PCA), and fed to HDBSCAN, which outputs cluster labels for each
+data point. The optimal setup for HDBSCAN (i.e. which input attributes, and what hyperparameter setup
+to use for the algorithm HDBSCAN itself) is found via a gridsearch, and the final optimal
+setup is then selected.</p>
+<p>There are flowcharts in <a class="reference internal" href="binary_classifier.html#binary"><span class="std std-ref">binary_classifier module</span></a> and <a class="reference internal" href="classifier_consolidation.html#consolidation"><span class="std std-ref">classifier_consolidation module</span></a> that show an overview
+of the optimization procedure used for the training of HDBSCAN. In order to achieve
+good performance, we found that it is important to 1) select informative features
+using RF to rank feature importances and 2) reduce the
+dimensionality in order to remove correlations from the attributes and subsequently
+present HDBSCAN with a more manageable number of dimensions where it performs best.
+While a RF classifier can be presented with a large number of correlated features,
+HDBSCAN would be impacted both in terms of classification quality and computation time.</p>
+<p>We therefore start from all colour combinations available in our dataset,
+and use a RF classifier and the spectroscopic labels to identify the relative rank of all
+input features, keeping the most informative. Using the PCA implementation of scikit learn we further reduce these features
+to a lower number of dimensions. Finally, we perform a gridsearch on the <code class="docutils literal notranslate"><span class="pre">min_cluster_size</span></code>
+to identify the best hyperparameter setup for each of our HDBSCAN classifiers.</p>
+<p>Following this procedure for each of the classes (star, galaxy, QSO), we construct
+three binary classifiers (see <a class="reference internal" href="binary_classifier.html#binary"><span class="std std-ref">binary_classifier module</span></a>). Having classified our
+sample three times, we apply the consolidation step (see <a class="reference internal" href="classifier_consolidation.html#consolidation"><span class="std std-ref">classifier_consolidation module</span></a>),
+leading to the final object classification including star, galaxies, QSO and outliers.</p>
+<p>In addition, after using the method described above to train three binary classifiers,
+the trained HDBSCAN clusterers can then be used to predict the cluster class
+of new data points, which can then be fed into the consolidation step to give
+output predicted labels for a completely new dataset (see <a class="reference internal" href="predict.html#predict"><span class="std std-ref">predict module</span></a>).</p>
+<p>A couple of uses for this method are: train the model on a dataset with known labels,
+and having obtained predicted labels for each datapoint in this dataset, locate the datapoints whose labels from the clustering
+method disagree with the initial known labels. These points can then be investigated further to
+correct potentially mislabelled sources. An additional use is training on
+a known dataset, and then applying the trained classifier on a new dataset to predict labels for
+previously unseen data with no existing labels.</p>
+<p>We describe the implementation of this method in the code in the links to each module
+on the left. The code consists of three main scripts, <a class="reference internal" href="binary_classifier.html#binary"><span class="std std-ref">binary_classifier module</span></a>, <a class="reference internal" href="classifier_consolidation.html#consolidation"><span class="std std-ref">classifier_consolidation module</span></a> and
+<a class="reference internal" href="predict.html#predict"><span class="std std-ref">predict module</span></a>, which are all called in <a class="reference internal" href="main.html#main"><span class="std std-ref">main module</span></a>.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="modules.html" class="btn btn-neutral float-right" title="Modules description" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Unsupervised Classification of Star, Galaxy, QSOs with HDBSCAN’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Crispin Logan, Sotiria Fotopoulou
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

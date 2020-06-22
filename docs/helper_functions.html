@@ -1,0 +1,486 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>helper_functions module &mdash; Unsupervised Classification of Star, Galaxy, QSOs with HDBSCAN  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="config module" href="config.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Unsupervised Classification of Star, Galaxy, QSOs with HDBSCAN
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="summary_of_method.html">Summary of modules and method</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Modules description</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binary_classifier.html">binary_classifier module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classifier_consolidation.html">classifier_consolidation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="predict.html">predict module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">helper_functions module</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Unsupervised Classification of Star, Galaxy, QSOs with HDBSCAN</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">Modules description</a> &raquo;</li>
+        
+      <li>helper_functions module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/helper_functions.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="helper-functions-module">
+<span id="helper"></span><h1>helper_functions module<a class="headerlink" href="#helper-functions-module" title="Permalink to this headline">¶</a></h1>
+<p>The helper_functions module contains a class that holds the functions used throughout the code.</p>
+<span class="target" id="module-helper_functions"></span><dl class="class">
+<dt id="helper_functions.HelperFunctions">
+<em class="property">class </em><code class="sig-prename descclassname">helper_functions.</code><code class="sig-name descname">HelperFunctions</code><span class="sig-paren">(</span><em class="sig-param">ConfigObj</em><span class="sig-paren">)</span><a class="headerlink" href="#helper_functions.HelperFunctions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Holds helper functions.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>ConfigObj (object): holds config variables</p>
+</dd>
+<dt>Attributes:</dt><dd><p>many! Aside from the Arg config variables object, all are methods/functions, and are detailed below.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="helper_functions.HelperFunctions.compute_metric_scores">
+<code class="sig-name descname">compute_metric_scores</code><span class="sig-paren">(</span><em class="sig-param">true_labels</em>, <em class="sig-param">pred_labels</em><span class="sig-paren">)</span><a class="headerlink" href="#helper_functions.HelperFunctions.compute_metric_scores" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Computes F1, Acc., Prec, Rec. for each of the object classes (star, galaxy,</p>
+</div></blockquote>
+<p>qso), from consolidated labels. N.B. the metric scores are for each of the
+classes one at a time.</p>
+<blockquote>
+<div><dl>
+<dt>Args:</dt><dd><p>true_labels (array): true labels</p>
+<p>pred_labels (array): predicted labels</p>
+</dd>
+<dt>Returns:</dt><dd><p>results_str (string): string of metric scores for each object</p>
+<p>metrics_list (list): summarizes/packages up metric scores</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="helper_functions.HelperFunctions.compute_performances">
+<code class="sig-name descname">compute_performances</code><span class="sig-paren">(</span><em class="sig-param">indata</em>, <em class="sig-param">kind</em><span class="sig-paren">)</span><a class="headerlink" href="#helper_functions.HelperFunctions.compute_performances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes classification metrics from all labels from hdbscan gridsearch,
+and produces a file with the metrics for each setup.</p>
+<dl>
+<dt>Args:</dt><dd><p>indata (astropy table): catalogue data - output from get_data function</p>
+<p>kind (str): object type (star, galaxy, or qso)</p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="helper_functions.HelperFunctions.do_consolidation">
+<code class="sig-name descname">do_consolidation</code><span class="sig-paren">(</span><em class="sig-param">predicted_labels_dict</em>, <em class="sig-param">list_of_indices</em>, <em class="sig-param">consolidation_type</em><span class="sig-paren">)</span><a class="headerlink" href="#helper_functions.HelperFunctions.do_consolidation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use optimal consolidation method to consolidate binary classifiers labels.
+Also writes some results to a file.</p>
+<dl>
+<dt>Args:</dt><dd><p>predicted_labels_dict (dict): dict of arrays with each binary classifier’s
+predicted labels (with 1 for positive classification, 0 otherwise)</p>
+<p>list_of_indices (list of arrays): various arrays with different indices -
+see find_object_indices()</p>
+<p>consolidation_type (string): ‘optimal’ or ‘alternative’ depending on which
+consolidation method to use</p>
+</dd>
+<dt>Returns:</dt><dd><p>cluster_labels (array): consolidated labels</p>
+<p>after_cons_str (string): number of objs post-consolidation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="helper_functions.HelperFunctions.do_hdbscan_gridsearch">
+<code class="sig-name descname">do_hdbscan_gridsearch</code><span class="sig-paren">(</span><em class="sig-param">attribute_names</em>, <em class="sig-param">scaled_data</em>, <em class="sig-param">kind</em><span class="sig-paren">)</span><a class="headerlink" href="#helper_functions.HelperFunctions.do_hdbscan_gridsearch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run hdbscan hyperparameter gridsearch to get best hyperparameter setup
+to be used later in final model.</p>
+<dl>
+<dt>Args:</dt><dd><p>attribute_names (list): list of attribute names</p>
+<p>scaled_data (array): scaled attributes</p>
+<p>kind (str): object type - star, galaxy, qso</p>
+</dd>
+<dt>Returns:</dt><dd><p>cluster_labels (array): output labels according to clustering result</p>
+<p>clusterer (object): trained hdbscan clusterer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="helper_functions.HelperFunctions.do_pca">
+<code class="sig-name descname">do_pca</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">ncomp=3</em>, <em class="sig-param">kind=None</em>, <em class="sig-param">save=False</em><span class="sig-paren">)</span><a class="headerlink" href="#helper_functions.HelperFunctions.do_pca" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run PCA decomposition on data.</p>
+<dl>
+<dt>Args:</dt><dd><p>data (array): data on which PCA is to be performed</p>
+<p>ncomp (int): PCA reduction dimension</p>
+<p>kind (str): object type - star, galaxy, qso (only set if save set to True)</p>
+<p>save (bool): whether to save PCA reducer or not</p>
+</dd>
+<dt>Returns:</dt><dd><p>fitted_pca (object): fitted PCA reducer model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="helper_functions.HelperFunctions.do_random_forest">
+<code class="sig-name descname">do_random_forest</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">target</em>, <em class="sig-param">features</em>, <em class="sig-param">kind</em>, <em class="sig-param">gridsearch=True</em><span class="sig-paren">)</span><a class="headerlink" href="#helper_functions.HelperFunctions.do_random_forest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run random forest gridsearch to obtain best Random Forest hyperparameter
+setup (optional). Then runs best RF setup to give list of importances of each attribute.</p>
+<dl>
+<dt>Args:</dt><dd><p>data (array): input data of attributes and their values</p>
+<p>target (array): binary labels for target</p>
+<p>features (list): attribute names</p>
+<p>kind (str): object type star, galaxy, qso</p>
+<p>gridsearch (bool): whether to do gridsearch or not</p>
+</dd>
+<dt>Returns:</dt><dd><p>clf (object): RF trained classifier</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="helper_functions.HelperFunctions.do_scale">
+<code class="sig-name descname">do_scale</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">save=False</em><span class="sig-paren">)</span><a class="headerlink" href="#helper_functions.HelperFunctions.do_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scale attributes</p>
+<dl>
+<dt>Args:</dt><dd><p>data (array): input unscaled attributes</p>
+<p>save (bool): whether to save scaler or not</p>
+</dd>
+<dt>Returns:</dt><dd><p>scaled_data (array): scaled attributes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="helper_functions.HelperFunctions.find_best_hdbscan_setup">
+<code class="sig-name descname">find_best_hdbscan_setup</code><span class="sig-paren">(</span><em class="sig-param">performance_dat_file</em><span class="sig-paren">)</span><a class="headerlink" href="#helper_functions.HelperFunctions.find_best_hdbscan_setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds best hdbscan setup for given object</p>
+<dl>
+<dt>Args:</dt><dd><p>performance_dat_file (string): path and name of performance dat file</p>
+</dd>
+<dt>Returns:</dt><dd><p>best_name (string): column name/setup for best hdbscan</p>
+<p>best_cluster (int/string): hdbscan cluster value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="helper_functions.HelperFunctions.find_object_indices">
+<code class="sig-name descname">find_object_indices</code><span class="sig-paren">(</span><em class="sig-param">predicted_labels_dict</em><span class="sig-paren">)</span><a class="headerlink" href="#helper_functions.HelperFunctions.find_object_indices" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Finds indices in arrays for objects and combinations / duplicates of</p>
+</div></blockquote>
+<dl>
+<dt>positive classifications from the binary classifiers.</dt><dd><p>Required for do_consolidation (optimal or alternative) functions.</p>
+<dl>
+<dt>Args:</dt><dd><p>predicted_labels_dict (dict): dict of arrays with each binary classifier’s
+predicted labels (with 1 for positive classification, 0 otherwise)</p>
+</dd>
+<dt>Returns:</dt><dd><p>list_of_indices (list of arrays): various arrays with different indices</p>
+<p>before_consolidation_str (string): number of objs pre-consolidation</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="helper_functions.HelperFunctions.get_all_features">
+<code class="sig-name descname">get_all_features</code><span class="sig-paren">(</span><em class="sig-param">indata</em>, <em class="sig-param">photo_band_list</em>, <em class="sig-param">combine_type</em>, <em class="sig-param">targetname=None</em>, <em class="sig-param">target=None</em><span class="sig-paren">)</span><a class="headerlink" href="#helper_functions.HelperFunctions.get_all_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates attributes from catalogue data.</p>
+<dl>
+<dt>Args:</dt><dd><p>indata (astropy table): catalogue data - output from get_data function</p>
+<p>photo_band_list (list): list of photometric bands to use</p>
+<p>combine_type (str): subtract (for colours) or divide - how to make attributes
+from photometric bands</p>
+<p>targetname (str): column name of true labels</p>
+<p>target (str/int): corresponds to number of object type in true labels</p>
+</dd>
+<dt>Returns:</dt><dd><p>attribute_list (list): list of attribute values</p>
+<p>attribute_names (list): names of attributes</p>
+<p>attribute_target (array): binary labels for target type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="helper_functions.HelperFunctions.get_data">
+<code class="sig-name descname">get_data</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">filetype</em><span class="sig-paren">)</span><a class="headerlink" href="#helper_functions.HelperFunctions.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads in catalogue data.</p>
+<dl>
+<dt>Args:</dt><dd><p>filename (str): name of catalgoue</p>
+<p>filetype (str): type of file (e.g. csv)</p>
+</dd>
+<dt>Returns:</dt><dd><p>incat (astropy table): table of catalogue data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="helper_functions.HelperFunctions.plot_classification">
+<code class="sig-name descname">plot_classification</code><span class="sig-paren">(</span><em class="sig-param">indata</em>, <em class="sig-param">labels1</em>, <em class="sig-param">labels2</em>, <em class="sig-param">labels1_name</em>, <em class="sig-param">labels2_name</em>, <em class="sig-param">dict_labels1</em>, <em class="sig-param">dict_labels2</em><span class="sig-paren">)</span><a class="headerlink" href="#helper_functions.HelperFunctions.plot_classification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates two side-by-side colour plots for two sets of labels for the same catalogue.</p>
+<dl>
+<dt>Args:</dt><dd><p>indata (astropy table): catalogue data - output from get_data function</p>
+<p>labels1 (array): First set of labels</p>
+<p>labels2 (array): Second set of labels</p>
+<p>labels1_name (str): Name of first set of labels to appear in plot</p>
+<p>labels2_name (str): Name of second set of labels to appear in plot</p>
+<p>dict_labels1 (dict): Dict with keys as object name, value as numeric label value
+for first set of labels</p>
+<p>dict_labels2 (dict): Dict with keys as object name, value as numeric label value
+for second set of labels</p>
+</dd>
+<dt>Returns:</dt><dd><p>fig, ax (objects): fig and ax objects of plot as from matplotlib</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="helper_functions.HelperFunctions.plot_confusion_matrix">
+<code class="sig-name descname">plot_confusion_matrix</code><span class="sig-paren">(</span><em class="sig-param">y_true</em>, <em class="sig-param">y_pred</em>, <em class="sig-param">identifiers</em>, <em class="sig-param">normalize=True</em><span class="sig-paren">)</span><a class="headerlink" href="#helper_functions.HelperFunctions.plot_confusion_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot confusion matrix</p>
+<dl>
+<dt>Args:</dt><dd><p>y_true (array): True labels</p>
+<p>y_pred (array): Predicted labels</p>
+<p>f (list): List of names of objects that the values in the labels arrays
+refer to in order of size of value in label arrays. If length of list
+is 1, then will convert input labels to binary form and plot a binary
+confusion matrix</p>
+<p>normalize (bool): Sets whether we normalize confusion matrix or not</p>
+</dd>
+<dt>Returns:</dt><dd><p>fig (object): Plot object</p>
+<p>ax (str): Plot object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="helper_functions.HelperFunctions.select_important_attributes">
+<code class="sig-name descname">select_important_attributes</code><span class="sig-paren">(</span><em class="sig-param">attribute_names</em>, <em class="sig-param">RF_importances_file</em>, <em class="sig-param">top=0</em><span class="sig-paren">)</span><a class="headerlink" href="#helper_functions.HelperFunctions.select_important_attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select attributes according to their importance (from Random Forest output).</p>
+<dl>
+<dt>Args:</dt><dd><p>attribute_names (list): attribute names</p>
+<p>RF_importances_file (str): filepath for RF imprtances file (output from do_random_forest function)</p>
+<p>top (int): number of top attributes to select</p>
+</dd>
+<dt>Returns:</dt><dd><p>index (list): indices of selected attributes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="helper_functions.HelperFunctions.train_and_save_hdbscan">
+<code class="sig-name descname">train_and_save_hdbscan</code><span class="sig-paren">(</span><em class="sig-param">attribute_names</em>, <em class="sig-param">scaled_data</em>, <em class="sig-param">hdbscan_setup</em>, <em class="sig-param">kind</em><span class="sig-paren">)</span><a class="headerlink" href="#helper_functions.HelperFunctions.train_and_save_hdbscan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trains and saves an hdbscan clusterer object for use later in predict stage.
+Also saves the position in PCA space for each datapoint to a text file.
+Also saves a dendrogram plot from the trained hdbscan clusterer.</p>
+<dl>
+<dt>Args:</dt><dd><p>attribute_names (list): Names of all possible attributes</p>
+<p>scaled_data (array): Scaled colour data</p>
+<p>hdbscan_setup (str): Contains setup for hdbscan training in form of
+‘{}_{}_{}’.format(RF_top, ncomp, min_cluster_size)</p>
+<p>kind (str): object type (star, galaxy, or qso)</p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="helper_functions.HelperFunctions.write_best_labels_binary">
+<code class="sig-name descname">write_best_labels_binary</code><span class="sig-paren">(</span><em class="sig-param">best_name</em>, <em class="sig-param">best_cluster</em>, <em class="sig-param">kind</em><span class="sig-paren">)</span><a class="headerlink" href="#helper_functions.HelperFunctions.write_best_labels_binary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes best labels to file in a binary format</p>
+<dl>
+<dt>Args:</dt><dd><p>best_name (string): column name/setup for best hdbscan</p>
+<p>best_cluster (int/string): hdbscan cluster value</p>
+<p>kind (str): object type (star, galaxy, or qso)</p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="config.html" class="btn btn-neutral float-left" title="config module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Crispin Logan, Sotiria Fotopoulou
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

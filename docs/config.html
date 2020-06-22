@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>config module &mdash; Unsupervised Classification of Star, Galaxy, QSOs with HDBSCAN  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="helper_functions module" href="helper_functions.html" />
+    <link rel="prev" title="predict module" href="predict.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Unsupervised Classification of Star, Galaxy, QSOs with HDBSCAN
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="summary_of_method.html">Summary of modules and method</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Modules description</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binary_classifier.html">binary_classifier module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classifier_consolidation.html">classifier_consolidation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="predict.html">predict module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper_functions.html">helper_functions module</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Unsupervised Classification of Star, Galaxy, QSOs with HDBSCAN</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">Modules description</a> &raquo;</li>
+        
+      <li>config module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/config.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="config-module">
+<span id="config"></span><h1>config module<a class="headerlink" href="#config-module" title="Permalink to this headline">¶</a></h1>
+<p>The config module contains a class that holds the configuration variables used throughout the code.</p>
+<span class="target" id="module-config"></span><dl class="class">
+<dt id="config.ConfigVars">
+<em class="property">class </em><code class="sig-prename descclassname">config.</code><code class="sig-name descname">ConfigVars</code><span class="sig-paren">(</span><em class="sig-param">test</em>, <em class="sig-param">kind=None</em>, <em class="sig-param">gridsearch=False</em>, <em class="sig-param">n_jobs=2</em><span class="sig-paren">)</span><a class="headerlink" href="#config.ConfigVars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Holds config variables. test (see Args) has to be passed on instantiation.
+The other three args are optional. A lot of other attributes are automatically set
+on instantiation (see Attributes). Note that some of the attributes are ‘generic’,
+and the CLASS in the string may be replaced in other scripts with e.g. ‘star’ or ‘galaxy’
+etc.</p>
+<dl>
+<dt>Args:</dt><dd><p>test (bool): whether test run or not</p>
+<p>kind (str): set to object type (star, galaxy, or qso)</p>
+<p>gridsearch (bool): whether to run Random Forest (RF) gridsearch or not</p>
+<p>n_jobs (int): no of cores to run on. Automatically set to half of available cores</p>
+</dd>
+<dt>Attributes:</dt><dd><p>test (bool): whether test run or not</p>
+<p>kind (str): set to object type (star, galaxy, or qso)</p>
+<p>gridsearch (bool): whether to run Random Forest gridsearch or not</p>
+<p>n_jobs (int): no of cores to run on. Automatically set to half of available cores</p>
+<p>base_path (str): base path reference for other paths</p>
+<p>random_state_val (int): used for non-deterministic steps (PCA, RF)</p>
+<p>catname (str): name of input catalogue (with labels)</p>
+<p>catname_predicted (str): name of unsen catalogue for prediction</p>
+<p>targetname (str): column name of catname that contains the true labels</p>
+<p>classes (list): object types for classification</p>
+<p>photo_band_list (list): list of photometric bands used to create the
+attributes (see combine_type)</p>
+<p>combine_type (str): ‘subtract’ or ‘divide’ - sets how to combine the
+photometric bands (i.e. ‘subtract’ creates colours)</p>
+<p>hclass_dict (dict): mapping of numeric values in targetname column to
+object type</p>
+<p>hdbscanclass_dict (dict): numeric labels to be used for HDBSCAN
+predicted object types</p>
+<p>plot_colours_dict (dict): object to colour dict used for plotting</p>
+<p>RF_param_grid (list of dict): RF parameter grid to be used for RF gridsearch</p>
+<p>RF_top_gridsearch_vals (list): top features from ranked RF importances to
+be used to select features to hdbscan gridsearch</p>
+<p>ncomp_gridsearch_vals (list): number of dimensions to which to reduce
+using PCA for input to hdbscan gridsearch</p>
+<p>min_cluster_size_gridsearch_vals (range / list): min_cluster_size values
+to try in hdbscan gridsearch</p>
+<p>data_output (str): path name for data output</p>
+<p>data_file_predicted (str): path to catalogue for prediction</p>
+<p>RF_dir (str): path to RF output</p>
+<p>hdb_dir (str): path to hdbscan output</p>
+<p>sav_mod_dir (str): path to saved models</p>
+<p>cons_dir (str): path to consolidation step output</p>
+<p>pred_dir (str): path to prediction step output</p>
+<p>data_file (str): path to catalogue for training data with labels</p>
+<p>RF_best_params_file (str): path to best hyperparameters for RF from RF gridsearch</p>
+<p>RF_best_metrics_file (str): path to best metrics for best RF from RF gridsearch</p>
+<p>RF_importances (str): path to list of feature importances from RF</p>
+<p>HDBSCAN_gridsearch (str): path to output file from hdbscan gridsearch (labels for each stup)</p>
+<p>HDBSCAN_gridsearch_performance (str): path to summary of metrics from
+each setup from hdbscan gridsearch</p>
+<p>dendrogram_file (str): path to dendrogram plot from best hdbscan setup</p>
+<p>hdbscan_best_setups_file (str): path to summary file of best hdbscan classifier setup</p>
+<p>PCA_dimensions_file (str): path to positions in PCA space for each datapoint in training dataset</p>
+<p>saved_scaler_model_file (str): path to saved scaler model</p>
+<p>saved_pca_model_file (str): path to saved PCA model</p>
+<p>saved_hdbscan_model_file (str): path to saved hdbscan model</p>
+<p>HDBSCAN_consolidation_summary (str): path to file with summary of
+classification performance</p>
+<p>Catalogue_with_hdbscan_labels (str): path to catalogue with new hdbscan labels appended</p>
+<p>hdbscan_best_labels (str): path to best labels for each hdbscan binary classifier</p>
+<p>confusion_plots (str): path to confusion plots for consolidated labels</p>
+<p>opt_colour_plot (str): path to colour plot of consolidated lables (using optimal consolidation)</p>
+<p>alt_colour_plot (str): path to colour plot of consolidated lables (using alternative consolidation)</p>
+<p>HDBSCAN_consolidation_summary_predicted (str): path to summary of labels for label prediction on unseen catalogue</p>
+<p>Catalogue_with_hdbscan_labels_predicted (str): path to unseen catalogue with predicted labels</p>
+<p>pred_colour_plot (str): path to colour plot for predicted labels on unseen catalogue</p>
+<p>PCA_dimensions_file_prediction_data (str): path to positions in PCA space for each datapoint in prediction dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="helper_functions.html" class="btn btn-neutral float-right" title="helper_functions module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="predict.html" class="btn btn-neutral float-left" title="predict module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Crispin Logan, Sotiria Fotopoulou
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

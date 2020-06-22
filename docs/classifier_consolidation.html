@@ -1,0 +1,287 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>classifier_consolidation module &mdash; Unsupervised Classification of Star, Galaxy, QSOs with HDBSCAN  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="predict module" href="predict.html" />
+    <link rel="prev" title="binary_classifier module" href="binary_classifier.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Unsupervised Classification of Star, Galaxy, QSOs with HDBSCAN
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="summary_of_method.html">Summary of modules and method</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Modules description</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binary_classifier.html">binary_classifier module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">classifier_consolidation module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#description-of-code">Description of code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="predict.html">predict module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper_functions.html">helper_functions module</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Unsupervised Classification of Star, Galaxy, QSOs with HDBSCAN</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">Modules description</a> &raquo;</li>
+        
+      <li>classifier_consolidation module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/classifier_consolidation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-classifier_consolidation">
+<span id="classifier-consolidation-module"></span><span id="consolidation"></span><h1>classifier_consolidation module<a class="headerlink" href="#module-classifier_consolidation" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="classifier_consolidation.run_consolidation">
+<code class="sig-prename descclassname">classifier_consolidation.</code><code class="sig-name descname">run_consolidation</code><span class="sig-paren">(</span><em class="sig-param">conf</em>, <em class="sig-param">lib</em><span class="sig-paren">)</span><a class="headerlink" href="#classifier_consolidation.run_consolidation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper function for classifier consolidation code.</p>
+<dl>
+<dt>Args:</dt><dd><p>conf (object): contains config variables</p>
+<p>lib (object): contains helper functions</p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<p>The consolidation stage in this pipeline includes two methods as detailed in Section 5.3
+in <a class="reference external" href="http://https://ui.adsabs.harvard.edu/abs/2020A%26A...633A.154L/abstract">Logan and Fotopoulou (2020)</a>.
+The relevant text is copied here for reference:</p>
+<p><em>Optimal method</em>: For data points that are classified positively
+by two binary classifiers separately, we assign the point to the
+rarest object class, as follows: (i) sources classified as both STAR
+and GAL, we call STAR; (ii) sources classified as both QSO and
+GAL, we call QSO; (iii) sources classified as both STAR and
+QSO, we call QSO.
+We also define an outlier class, (different to the HDBSCAN
+outlier class) that we refer to as the “post-consolidation outlier”
+class. These post-consolidation outliers are those that are not
+classified positively by any of the binary classifiers.</p>
+<p><em>Alternative method</em>: The second consolidation method we
+investigated, which we refer to as the “alternative” method, we
+simply reassign all doubly positively classified objects to the
+post-consolidation outlier class.</p>
+<p>In the <a class="reference internal" href="#consolidation"><span class="std std-ref">classifier_consolidation module</span></a> this consolidation step is done for
+the labels that are predicted for the best HDBSCAN classifier setup as found
+in the <a class="reference internal" href="binary_classifier.html#binary"><span class="std std-ref">binary_classifier module</span></a>. We note that these labels are those predicted
+by our setup for data that have known labels. We note that the consolidation step
+is also run in the <a class="reference internal" href="predict.html#predict"><span class="std std-ref">predict module</span></a>.
+The main idea of this script is summarized in the flowchart below:</p>
+<a class="reference internal image-reference" href="_images/tikz_cons.png"><img alt="_images/tikz_cons.png" src="_images/tikz_cons.png" style="width: 400px;" /></a>
+<div class="section" id="description-of-code">
+<h2>Description of code<a class="headerlink" href="#description-of-code" title="Permalink to this headline">¶</a></h2>
+<p>We now run through the code written in the <a class="reference internal" href="#consolidation"><span class="std std-ref">classifier_consolidation module</span></a>:</p>
+<p><strong>Data read-in and setup</strong>: The function <code class="docutils literal notranslate"><span class="pre">get_data</span></code> is used
+to read in the catalogue data, and then the binary labels from each of the three
+classifiers’ labels are read in to a dictionary <code class="docutils literal notranslate"><span class="pre">dict_predicted_labels</span></code>.</p>
+<p><strong>Consolidation step and colour plots</strong>: The function <code class="docutils literal notranslate"><span class="pre">find_object_indices</span></code>
+is called and returns a list of label indices (e.g. for where a star and a galaxy
+are positively identified by their respective classifier) that is then passed to
+the function <code class="docutils literal notranslate"><span class="pre">do_consolidation</span></code> that returns the final consolidated labels
+(for both consolidation methods mentioned above). The final consolidated labels
+are also plotted with the function <code class="docutils literal notranslate"><span class="pre">plot_classification</span></code>, and the pre- and
+post- consolidation labels appended to the original catalogue and saved to file.
+Information regarding the number of objects before and after consolidation is also
+returned by the <code class="docutils literal notranslate"><span class="pre">find_object_indices</span></code> and <code class="docutils literal notranslate"><span class="pre">plot_classification</span></code> functions
+respectively, and written to a text file.</p>
+<p><strong>Metric scores</strong>: The final consolidated labels are then passed
+to the function <code class="docutils literal notranslate"><span class="pre">compute_metric_scores</span></code> which computes various performance
+metrics for the labels, which are also written to a text file.</p>
+<p><strong>Confusion matrices</strong>: The function <code class="docutils literal notranslate"><span class="pre">plot_confusion_matrix</span></code>
+is then used to plot confusion matrices (normalized and not normalized) for the
+output labels for both consolidation methods and these are saved.</p>
+<p><strong>Outputs</strong>: The images output from this module run can be found in the data/output/consolidation
+directory. They include colour plots for both consolidation methods (an example for the optimal
+consolidation method is shown below), and confusion
+plots for both consolidation methods and for each binary classifier separately
+after consolidation (those for the star classifier, both normalized and
+unnormalized are shown below for the optimal consoldiation method), and for all objects at once.
+Useful text files, such as the summary of the consolidation step and metrics can be found
+in the same directory. The catalogue with predicted labels is also given in this directory.</p>
+<a class="reference internal image-reference" href="_images/CPz_optimal_colour_plot.png"><img alt="_images/CPz_optimal_colour_plot.png" src="_images/CPz_optimal_colour_plot.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="_images/CPz_confusion_plot_star_consolidation_optimal.png"><img alt="_images/CPz_confusion_plot_star_consolidation_optimal.png" src="_images/CPz_confusion_plot_star_consolidation_optimal.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="_images/CPz_confusion_plot_star_normalized_consolidation_optimal.png"><img alt="_images/CPz_confusion_plot_star_normalized_consolidation_optimal.png" src="_images/CPz_confusion_plot_star_normalized_consolidation_optimal.png" style="width: 400px;" /></a>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="predict.html" class="btn btn-neutral float-right" title="predict module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="binary_classifier.html" class="btn btn-neutral float-left" title="binary_classifier module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Crispin Logan, Sotiria Fotopoulou
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

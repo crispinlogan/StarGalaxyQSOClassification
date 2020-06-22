@@ -1,0 +1,282 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>binary_classifier module &mdash; Unsupervised Classification of Star, Galaxy, QSOs with HDBSCAN  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="classifier_consolidation module" href="classifier_consolidation.html" />
+    <link rel="prev" title="main module" href="main.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Unsupervised Classification of Star, Galaxy, QSOs with HDBSCAN
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="summary_of_method.html">Summary of modules and method</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Modules description</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">binary_classifier module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#description-of-code">Description of code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classifier_consolidation.html">classifier_consolidation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="predict.html">predict module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper_functions.html">helper_functions module</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Unsupervised Classification of Star, Galaxy, QSOs with HDBSCAN</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">Modules description</a> &raquo;</li>
+        
+      <li>binary_classifier module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/binary_classifier.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-binary_classifier">
+<span id="binary-classifier-module"></span><span id="binary"></span><h1>binary_classifier module<a class="headerlink" href="#module-binary_classifier" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="binary_classifier.run_binary">
+<code class="sig-prename descclassname">binary_classifier.</code><code class="sig-name descname">run_binary</code><span class="sig-paren">(</span><em class="sig-param">conf</em>, <em class="sig-param">lib</em><span class="sig-paren">)</span><a class="headerlink" href="#binary_classifier.run_binary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper function for binary classifier code.</p>
+<dl>
+<dt>Args:</dt><dd><p>conf (object): contains config variables</p>
+<p>lib (object): contains helper functions</p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<p>In short, the binary_classifier module takes an input catalogue with labels,
+and uses the photometic bands in the catalogue to create colours. These colours are then used
+as attributes to train a classifier to classify the datapoints.</p>
+<p>Here we give a run-through of the code, taking as an example the star classifier.
+The bulk of this script is summarized in the image below.</p>
+<a class="reference internal image-reference" href="_images/tikz_grid.png"><img alt="_images/tikz_grid.png" src="_images/tikz_grid.png" style="width: 150px;" /></a>
+<div class="section" id="description-of-code">
+<h2>Description of code<a class="headerlink" href="#description-of-code" title="Permalink to this headline">¶</a></h2>
+<p><strong>Setup</strong>: The training catalogue is read in with the <code class="docutils literal notranslate"><span class="pre">get_data</span></code> function, and
+we specify the filetype (here in .csv  format). The target is also defined -
+this is done using the <code class="docutils literal notranslate"><span class="pre">hclass_dict</span></code>  to convert the star  into its
+numeric representation (as defined in the <a class="reference internal" href="config.html#config"><span class="std std-ref">config module</span></a>).</p>
+<p><strong>Prepare attributes</strong>: Then the <code class="docutils literal notranslate"><span class="pre">get_all_features</span></code> function is called. It is
+passed <code class="docutils literal notranslate"><span class="pre">photo_band_list</span></code>, which defines the filters considered, which are
+later used in the function <code class="docutils literal notranslate"><span class="pre">get_all_features</span></code> to create all colour combinations
+among them. The variable <code class="docutils literal notranslate"><span class="pre">combine_type</span></code>  takes the values <a href="#id1"><span class="problematic" id="id2">`</span></a>subtract’
+or <a href="#id3"><span class="problematic" id="id4">`</span></a>divide’  depending on the input data (magnitudes or fluxes respectively).
+It also takes the catalogue data and target name and the corresponding numeric representation.</p>
+<p><strong>Scaling</strong>: The <code class="docutils literal notranslate"><span class="pre">do_scale</span></code>  function is then called to scale the data (mean of 0
+and variance of 1 for each attribute column). The scaler object is saved too, for
+use in the prediction stage later on.</p>
+<p><strong>RF gridsearch</strong>: The <code class="docutils literal notranslate"><span class="pre">do_random_forest</span></code>  function is then called which runs a
+hyperparameter gridsearch on a RF classifier to obtain the best hyperparameter setup
+(if <code class="docutils literal notranslate"><span class="pre">gridsearch</span></code>  is set to True) to then run this RF once using the labels
+star/non-star (in this example), which provides a list of important attributes,
+which is then used later.</p>
+<p><strong>HDBSCAN gridsearch</strong>: The <code class="docutils literal notranslate"><span class="pre">do_hdbscan_gridsearch</span></code>  function is then called,
+which runs the gridsearch on HDBSCAN, finding the best setup for the binary star
+classifier (in this example), trying different numbers of the top RF attributes
+from the list of importances (<code class="docutils literal notranslate"><span class="pre">RF_top</span></code>) as found in the <code class="docutils literal notranslate"><span class="pre">do_random_forest</span></code> function call,
+different numbers of dimensions to which to reduce these attributes to using PCA (<code class="docutils literal notranslate"><span class="pre">ncomp</span></code>),
+and then a different value of <code class="docutils literal notranslate"><span class="pre">min_cluster_size</span></code> for the hdbscan hyperparameter itself.</p>
+<p><strong>Process HDBSCAN gridsearch output</strong>: After this gridsearch is completed,
+<code class="docutils literal notranslate"><span class="pre">compute_performances</span></code> is called to create a file with the associated
+metric scores for each of the classifiers’ setups (different numbers of top
+RF attributes, different PCA dimensions, different <code class="docutils literal notranslate"><span class="pre">min_cluster_size</span></code>).
+The <code class="docutils literal notranslate"><span class="pre">find_best_hdbscan_setup</span></code> function is called to find the best setup
+for the classifier in question (e.g. star), and then <code class="docutils literal notranslate"><span class="pre">write_best_labels_binary</span></code>
+writes these best labels to a separate csv file in terms of a binary setup
+(i.e. 1 for e.g. star, 0 for e.g. non-star).  We also save the best setups to a
+text file (i.e. how many top RF attributes used, to how many dimensions they were
+reduced using PCA, and what <code class="docutils literal notranslate"><span class="pre">min_cluster_size</span></code> was used for HDBSCAN).</p>
+<p><strong>Save best HDBSCAN classifier</strong>: The function <code class="docutils literal notranslate"><span class="pre">train_and_save_hdbscan</span></code> is then
+called to train and save the HDBSCAN classifier and save the trained HDBSCAN
+classifier object (later used in the prediction stage). The PCA object is also
+saved to be run on the new data in the prediction stage. The position of each datapoint
+in PCA space is also saved to a text file. A dendrogram plot
+of each trained HDBSCAN clusterer is also saved.</p>
+<p><strong>Outputs</strong>: The only images output from this module run are dendrograms of the HDBSCAN
+clusterer for each of the star/gal/QSO setups (see the example for the star setup
+below), and can be found in the data/output/hdbscan_gridsearch directory.</p>
+<a class="reference internal image-reference" href="_images/CPz_HDBSCAN_dendrogram_star.png"><img alt="_images/CPz_HDBSCAN_dendrogram_star.png" src="_images/CPz_HDBSCAN_dendrogram_star.png" style="width: 300px;" /></a>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="classifier_consolidation.html" class="btn btn-neutral float-right" title="classifier_consolidation module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="main.html" class="btn btn-neutral float-left" title="main module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Crispin Logan, Sotiria Fotopoulou
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
