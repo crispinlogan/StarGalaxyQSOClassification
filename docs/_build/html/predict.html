@@ -1,0 +1,257 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>predict module &mdash; Unsupervised Classification of Star, Galaxy, QSOs with HDBSCAN  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="config module" href="config.html" />
+    <link rel="prev" title="classifier_consolidation module" href="classifier_consolidation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Unsupervised Classification of Star, Galaxy, QSOs with HDBSCAN
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="summary_of_method.html">Summary of modules and method</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Modules description</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binary_classifier.html">binary_classifier module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classifier_consolidation.html">classifier_consolidation module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">predict module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#description-of-code">Description of code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper_functions.html">helper_functions module</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Unsupervised Classification of Star, Galaxy, QSOs with HDBSCAN</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">Modules description</a> &raquo;</li>
+        
+      <li>predict module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/predict.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="predict-module">
+<span id="predict"></span><h1>predict module<a class="headerlink" href="#predict-module" title="Permalink to this headline">¶</a></h1>
+<p>Prediction / Application to new data: The prediction stage involves using the three saved binary HDBSCAN models
+(using the best setups found in the gridsearch stage in the <a class="reference internal" href="binary_classifier.html#binary"><span class="std std-ref">binary_classifier module</span></a>),
+that are trained on the known dataset, that has labels. We then use these trained
+binary models to predict the classes of new data points. These new predicted labels
+then undergo the consolidation stage to provide the final predicted labels.</p>
+<div class="section" id="description-of-code">
+<h2>Description of code<a class="headerlink" href="#description-of-code" title="Permalink to this headline">¶</a></h2>
+<p><strong>Data read-in and preparation</strong>: <code class="docutils literal notranslate"><span class="pre">get_data</span></code> and <code class="docutils literal notranslate"><span class="pre">get_all_features</span></code>
+are used as in the <a class="reference internal" href="binary_classifier.html#binary"><span class="std std-ref">binary_classifier module</span></a>, but this time on the new catalogue for which
+labels are to be predicted. Additionally in this script the saved scaler model
+from the <a class="reference internal" href="binary_classifier.html#binary"><span class="std std-ref">binary_classifier module</span></a> is loaded and the new input data scaled by
+this pre-trained model. It is important that the scaling that is done on this new
+data is the same as that done on the training data.</p>
+<p><strong>Predict new labels</strong>: For each of the three binary classifiers, the new scaled data is then reduced to
+have just the attributes that were selected in the HDBSCAN gridsearch step in
+binary, for the best classifier setup (this is done using
+<code class="docutils literal notranslate"><span class="pre">select_important_attributes</span></code> after obtaining the number of top attributes
+from the list of important attributes found from the RF using <code class="docutils literal notranslate"><span class="pre">find_best_hdbscan_setup</span></code>).
+The relevant pre-trained PCA model then is loaded and the appropriate PCA reduction
+is performed on the new data (again it is important that the PCA reduction that is
+done on this new data is the same as that done on the training data for the bests
+model setup). The position in this PCA space for each datapoint in the prediction catalogue is saved to a text file.
+The new data (that has now been both scaled and reduced to a lower
+number of dimensions by PCA) is now ready to be fed to the pre-trained HDBSCAN
+clusterer. This prediction step by the pre-trained HDBSCAN clusterer is done
+with the <code class="docutils literal notranslate"><span class="pre">hdbscan.approximate_predict</span></code> call. These output labels for each
+object type are then binarized and appended to the input catalogue.</p>
+<p><strong>Consolidation step</strong>: As in consolidation, the <code class="docutils literal notranslate"><span class="pre">find_object_indices</span></code> and <code class="docutils literal notranslate"><span class="pre">do_consolidation</span></code>
+functions are used in a similar manner, and the final consolidated labels produced.
+Information regarding the number of objects in each class before and after consolidation
+is saved to a text file. The final catalogue with these consolidated labels appended
+is also saved. Finally colour plots of the final predicted labels are also made using
+the <code class="docutils literal notranslate"><span class="pre">plot_classification</span></code> function.</p>
+<p><strong>Outputs</strong>: The only image output from this module run is a colour plot of both consolidation methods
+(an example is shown below).
+It can be found in the data/output/predict directory. A text file with the summary of the
+prediction labels after consolidation step can be found in the same directory.
+The catalogue with predicted labels is also given in this directory.</p>
+<a class="reference internal image-reference" href="_images/short_KiDSVW_predicted_colour_plot.png"><img alt="_images/short_KiDSVW_predicted_colour_plot.png" src="_images/short_KiDSVW_predicted_colour_plot.png" style="width: 600px;" /></a>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="config.html" class="btn btn-neutral float-right" title="config module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="classifier_consolidation.html" class="btn btn-neutral float-left" title="classifier_consolidation module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Crispin Logan, Sotiria Fotopoulou
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
